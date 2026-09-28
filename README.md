@@ -97,3 +97,15 @@ Forneça todos os critérios. A CLI valida completude, referência dos trechos e
 Cada caso exige um memorando e mapa de evidências, além de oito respostas estruturadas. A checagem distingue valor nominal de unidades pendentes de saldo exigível ou indenização, sem estabelecer direito a uma quantia. Citações precisam apontar para documentos específicos do contrato correto.
 
 Para comparar efeitos do tamanho isoladamente, será necessário gerar versões pareadas do MESMO caso com acervos de tamanhos distintos e evidências idênticas. Os três casos atuais variam números e contratos e não sustentam, sozinhos, uma curva causal de degradação por contexto. A próxima ampliação deve acrescentar documentos menos uniformes e famílias jurídicas diferentes.
+
+## Minutei local
+
+No checkout do Minutei com o adapter local, mantenha `bun run bench:serve` em outro terminal e execute:
+
+```sh
+bun run bench:run /caminho/legal-longcase-bench C01 /tmp/C01.json
+```
+
+O adapter usa login de desenvolvimento, um escritório isolado, documentos e notas reais, ferramentas e streaming do Capi. A inferência continua usando o provedor configurado do Minutei. Em memória, cada sessão usa uma conversa nova, sem reenvio do histórico. Consulte `docs/legal-benchmarks-local.md` no Minutei para configuração e limites.
+
+`AgentConfig.timeoutMs` define o limite por subprocesso, entre 1.000 e 3.600.000 ms; o padrão é 300.000 ms. O Minutei usa 1.800.000 ms para incluir uploads e inferência. Uma saída não zero preserva o diagnóstico do adapter em stderr.
